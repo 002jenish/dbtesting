@@ -53,18 +53,36 @@ function App() {
     })
   }
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch('https://dbtesting-002jenish.vercel.app/demo',{
-      method:'POST',
-      body:JSON.stringify(form),
-      headers:{
-        'Content-Type':'application/json'
+  
+    try {
+      const response = await fetch('https://dbtesting-002jenish.vercel.app/demo', {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      if (!response.ok) {
+        // Handle non-successful HTTP responses here
+        console.error('Request failed with status:', response.status);
+        return;
       }
-    })
+  
+      const data = await response.json();
+  
+      // Handle the response data here (if needed)
+      console.log('Response data:', data);
+    } catch (error) {
+      // Handle network errors or other exceptions here
+      console.error('Error occurred:', error);
+    }
+  }
+  
   //   const data = await response.json();
   //  console.log(data);
-  }
 
   // const getUsers = async ()=>{
   //   const response = await fetch('http://localhost:8080/demo',{
