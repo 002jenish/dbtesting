@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    const response = await fetch('https://dbtesting-002jenish.vercel.app/demo',{
+    const response = await fetch('https://dbtesting-002jenish.vercel.app',{
       method:'POST',
       body:JSON.stringify(form),
       headers:{
