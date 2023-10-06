@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    const response = await fetch('http://localhost:8080/demo',{
+    const response = await fetch('mongodb+srv://jenish1234:jenish_1234@todo.8jbdgxm.mongodb.net/',{
       method:'POST',
       body:JSON.stringify(form),
       headers:{
@@ -67,7 +67,7 @@ function App() {
   }
 
   const getUsers = async ()=>{
-    const response = await fetch('http://localhost:8080/demo',{
+    const response = await fetch('mongodb+srv://jenish1234:jenish_1234@todo.8jbdgxm.mongodb.net/',{
       method:'GET',
     })
    const data = await response.json();
