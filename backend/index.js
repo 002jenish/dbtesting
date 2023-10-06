@@ -33,12 +33,24 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 const server = express();
-
 server.use(cors());
+
+//middleware
 server.use(bodyParser.json());
 
+const corsOptions = {
+    origin: 'https://',
+  };
+  
+  server.use(cors(corsOptions));
+  
+
 // CRUD - Create
-server.post('/demo',async (req,res)=>{
+server.get("/", (req,res) =>{
+    res.json("Hello");
+})
+
+server.post('/api/login',async (req,res)=>{
     //create query
     try {
         let user = new User();

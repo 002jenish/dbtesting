@@ -1,44 +1,4 @@
-/*import { useState } from 'react'
-function App() {
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const handleOnSubmit = async (e) => {
-		e.preventDefault();
-		let result = await fetch(
-		'http://localhost:5000/register', {
-			method: "post",
-			body: JSON.stringify({ name, email }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-		result = await result.json();
-		console.warn(result);
-		if (result) {
-			alert("Data saved succesfully");
-			setEmail("");
-			setName("");
-		}
-	}
-	return (
-		<>
-			<h1>This is React WebApp </h1>
-			<form action="">
-				<input type="text" placeholder="name"
-				value={name} onChange={(e) => setName(e.target.value)} />
-				<input type="email" placeholder="email"
-				value={email} onChange={(e) => setEmail(e.target.value)} />
-				<button type="submit"
-				onClick={handleOnSubmit}>submit</button>
-			</form>
-
-		</>
-	);
-}
-
-export default App;
-*/
-
+/*
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -46,33 +6,29 @@ function App() {
   const [form, setForm] = useState({});
   // const [users, setUsers] = useState([]);
 
-  const handleForm = (e)=>{
-    setForm({
-      ...form,
-      [e.target.name] : e.target.value
-    })
-  }
+  // const handleForm = (e)=>{
+  //   setForm({
+  //     ...form,
+  //     [e.target.name] : e.target.value
+  //   })
+  // }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
     try {
-      const response = await fetch('https://dbtesting-002jenish.vercel.app', {
+      const response = fetch('https://dbtesting-002jenish.vercel.app/demo', {
         method: 'POST',
         body: JSON.stringify(form),
         headers: {
           'Content-Type': 'application/json'
         }
       });
-  
       if (!response.ok) {
         // Handle non-successful HTTP responses here
         console.error('Request failed with status:', response.status);
         return;
       }
-  
-      const data = await response.json();
-  
+      const data = response.json();
       // Handle the response data here (if needed)
       console.log('Response data:', data);
     } catch (error) {
@@ -100,18 +56,77 @@ function App() {
     <div>
       <form onSubmit={handleSubmit}>
         <span>username</span>
-        <input type="text" name="username" onChange={handleForm}></input>
+        <input type="text" name="username" ></input>
         <span>password</span>
-        <input type="text" name="password" onChange={handleForm}></input>
+        <input type="text" name="password"  ></input>
         <input type="submit"></input>
       </form>
-      {/* <div>
+      { <div>
         <ul>
           {users.map(user=><li key={user._id}>{user.username}</li>)}
         </ul>
-      </div> */}
+      </div> }
     </div>
   )
 }
 
 export default App;
+
+*/
+
+// pages/login.js
+import { useState } from 'react';
+
+export default function Login() {
+  const [user, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Send a POST request to your backend for authentication
+    const response = await fetch('https://dbtesting-git-main-002jenish.vercel.app/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user, password }),
+    });
+
+    if (response.ok) {
+      // Handle successful login
+      alert('Login successful');
+    } else {
+      // Handle login failure
+      alert('Login failed. Please check your credentials.');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Email:</label>
+          <input
+            type="text"
+            name = "username"
+            value={user}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name = "password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+}
