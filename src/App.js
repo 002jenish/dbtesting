@@ -62,8 +62,8 @@ function App() {
         'Content-Type':'application/json'
       }
     })
-    const data = await response.json();
-   console.log(data);
+  //   const data = await response.json();
+  //  console.log(data);
   }
 
   // const getUsers = async ()=>{
