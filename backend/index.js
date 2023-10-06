@@ -40,13 +40,18 @@ server.use(bodyParser.json());
 // CRUD - Create
 server.post('/demo',async (req,res)=>{
     //create query
-    let user = new User();
-    user.username = req.body.username;
-    user.password = req.body.password;
-    const doc = await user.save();
+    try {
+        let user = new User();
+        user.username = req.body.username;
+        user.password = req.body.password;
+        const doc = await user.save();
 
-    console.log(doc);
-    res.json(doc);
+        console.log(doc);
+        res.json(doc);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while saving the user.' });
+    }
 })
 
 //read query
