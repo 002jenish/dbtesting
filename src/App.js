@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    const response = await fetch('mongodb+srv://jenish1234:jenish_1234@todo.8jbdgxm.mongodb.net/',{
+    const response = await fetch('https://vercel.com/002jenish/dbtesting/ndrhUiZMYfFDfDnxdSxRxEPVyj79',{
       method:'POST',
       body:JSON.stringify(form),
       headers:{
@@ -67,7 +67,7 @@ function App() {
   }
 
   const getUsers = async ()=>{
-    const response = await fetch('mongodb+srv://jenish1234:jenish_1234@todo.8jbdgxm.mongodb.net/',{
+    const response = await fetch('https://vercel.com/002jenish/dbtesting/ndrhUiZMYfFDfDnxdSxRxEPVyj79',{
       method:'GET',
     })
    const data = await response.json();
