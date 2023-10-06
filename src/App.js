@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    const response = await fetch('mongodb+srv://jenish1234:jenish_1234@todo.8jbdgxm.mongodb.net/test',{
+    const response = await fetch('https://dbtesting-002jenish.vercel.app/demo',{
       method:'POST',
       body:JSON.stringify(form),
       headers:{
