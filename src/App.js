@@ -44,7 +44,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [form, setForm] = useState({});
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   const handleForm = (e)=>{
     setForm({
@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    const response = await fetch('https://vercel.com/002jenish/dbtesting/ndrhUiZMYfFDfDnxdSxRxEPVyj79',{
+    const response = await fetch('mongodb+srv://jenish1234:jenish_1234@todo.8jbdgxm.mongodb.net/test',{
       method:'POST',
       body:JSON.stringify(form),
       headers:{
@@ -66,17 +66,17 @@ function App() {
    console.log(data);
   }
 
-  const getUsers = async ()=>{
-    const response = await fetch('https://vercel.com/002jenish/dbtesting/ndrhUiZMYfFDfDnxdSxRxEPVyj79',{
-      method:'GET',
-    })
-   const data = await response.json();
-   setUsers(data);
-  }
+  // const getUsers = async ()=>{
+  //   const response = await fetch('http://localhost:8080/demo',{
+  //     method:'GET',
+  //   })
+  //  const data = await response.json();
+  //  setUsers(data);
+  // }
 
-  useEffect(()=>{
-    getUsers();
-  },[])
+  // useEffect(()=>{
+  //   getUsers();
+  // },[])
 
   return (
     <div>
@@ -87,11 +87,11 @@ function App() {
         <input type="text" name="password" onChange={handleForm}></input>
         <input type="submit"></input>
       </form>
-      <div>
+      {/* <div>
         <ul>
           {users.map(user=><li key={user._id}>{user.username}</li>)}
         </ul>
-      </div>
+      </div> */}
     </div>
   )
 }
